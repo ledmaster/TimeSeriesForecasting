@@ -85,9 +85,9 @@ print 'MAE Media Movel', mean_absolute_error(y_pred_ma,y_true)
 
 #Faz o teste Wilcoxon Signed-Rank para determinar significado estatistico da diferenca nos erros
 # OPCIONAL - REQUER SCIPY
-error_linreg = abs(y_true - y_pred)
-error_last = abs(y_true - y_pred_last)
-print '\nWilcoxon P-value', wilcoxon(error_linreg,error_last)[1]/2.
+#error_linreg = abs(y_true - y_pred)
+#error_last = abs(y_true - y_pred_last)
+#print '\nWilcoxon P-value', wilcoxon(error_linreg,error_last)[1]/2.
 
 
 #Cria um grafico dos valores reais, previsoes da regressao linear e do modelo utilizando o ultimo valor
