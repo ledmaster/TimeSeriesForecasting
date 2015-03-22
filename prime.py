@@ -1,9 +1,7 @@
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_absolute_error
-from scipy.stats import wilcoxon
 import numpy as np
 import pandas as pd
-from matplotlib import pyplot as plt
 
 
 #Define funcao para calcular o MAPE
@@ -85,6 +83,7 @@ print 'MAE Media Movel', mean_absolute_error(y_pred_ma,y_true)
 
 #Faz o teste Wilcoxon Signed-Rank para determinar significado estatistico da diferenca nos erros
 # OPCIONAL - REQUER SCIPY
+#from scipy.stats import wilcoxon
 #error_linreg = abs(y_true - y_pred)
 #error_last = abs(y_true - y_pred_last)
 #print '\nWilcoxon P-value', wilcoxon(error_linreg,error_last)[1]/2.
@@ -92,6 +91,7 @@ print 'MAE Media Movel', mean_absolute_error(y_pred_ma,y_true)
 
 #Cria um grafico dos valores reais, previsoes da regressao linear e do modelo utilizando o ultimo valor
 # OPCIONAL - REQUER MATPLOTLIB
+#from matplotlib import pyplot as plt
 #plt.title('Prime Rate Brasil - Mensal - 2005 a 2014')
 #plt.ylabel('Prime Rate')
 #plt.xlabel('Periodos (Meses)')
