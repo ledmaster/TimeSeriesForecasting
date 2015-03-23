@@ -1,10 +1,13 @@
+# -*- coding: utf-8 -*-
+# Disponibilizado originalmente em http://www.mariofilho.com
+# Código disponibilizado para fins educacionais, o autor não oferece quaisquer garantias.
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_absolute_error
 import numpy as np
 import pandas as pd
 
 
-#Define funcao para calcular o MAPE
+#Define função para calcular o MAPE
 def mape(y_pred,y_true):
 
     return np.mean(np.abs((y_true - y_pred) / y_true)) * 100
@@ -33,7 +36,7 @@ y_data = np.array(y_data)
 
 
 
-#Listas para armazenar as previsoes de cada modelo
+#Listas para armazenar as previsões de cada modelo
 y_pred = []
 y_pred_last = []
 y_pred_ma = []
@@ -41,7 +44,7 @@ y_true = []
 
 
 
-#Itera pela serie temporal treinando um novo modelo a cada mes
+#Itera pela série temporal treinando um novo modelo a cada mês
 end = y_data.shape[0]
 for i in range(30,end):
 
@@ -61,7 +64,7 @@ for i in range(30,end):
     y_true.append(y_test)
 
 
-#Transforma as listas em arrays numpy para facilitar os calculos
+#Transforma as listas em arrays numpy para facilitar os cálculos
 y_pred = np.array(y_pred)
 y_pred_last = np.array(y_pred_last)
 y_pred_ma = np.array(y_pred_ma)
@@ -70,18 +73,18 @@ y_true = np.array(y_true)
 
 #Imprime os erros na tela
 print '\nMean Absolute Percentage Error'
-print 'MAPE Regressao Linear', mape(y_pred,y_true)
-print 'MAPE Ultimo Valor', mape(y_pred_last,y_true)
-print 'MAPE Media Movel', mape(y_pred_ma,y_true)
+print 'MAPE Regressão Linear', mape(y_pred,y_true)
+print 'MAPE Último Valor', mape(y_pred_last,y_true)
+print 'MAPE Média Móvel', mape(y_pred_ma,y_true)
 
 
 print '\nMean Absolute Error'
-print 'MAE Regressao Linear', mean_absolute_error(y_pred,y_true)
-print 'MAE Ultimo Valor', mean_absolute_error(y_pred_last,y_true)
-print 'MAE Media Movel', mean_absolute_error(y_pred_ma,y_true)
+print 'MAE Regressão Linear', mean_absolute_error(y_pred,y_true)
+print 'MAE Último Valor', mean_absolute_error(y_pred_last,y_true)
+print 'MAE Média Móvel', mean_absolute_error(y_pred_ma,y_true)
 
 
-#Faz o teste Wilcoxon Signed-Rank para determinar significado estatistico da diferenca nos erros
+#Faz o teste Wilcoxon Signed-Rank para determinar significado estatístico da diferença nos erros
 # OPCIONAL - REQUER SCIPY
 #from scipy.stats import wilcoxon
 #error_linreg = abs(y_true - y_pred)
@@ -89,14 +92,15 @@ print 'MAE Media Movel', mean_absolute_error(y_pred_ma,y_true)
 #print '\nWilcoxon P-value', wilcoxon(error_linreg,error_last)[1]/2.
 
 
-#Cria um grafico dos valores reais, previsoes da regressao linear e do modelo utilizando o ultimo valor
+#Cria um gráfico dos valores reais, previsões da regressão linear e do modelo utilizando o último valor
 # OPCIONAL - REQUER MATPLOTLIB
 #from matplotlib import pyplot as plt
 #plt.title('Prime Rate Brasil - Mensal - 2005 a 2014')
 #plt.ylabel('Prime Rate')
-#plt.xlabel('Periodos (Meses)')
-#reg_val, = plt.plot(y_pred,color='b',label='Regressao Linear')
+#plt.xlabel(u'Períodos (Meses)')
+#reg_val, = plt.plot(y_pred,color='b',label=u'Regressão Linear')
 #true_val, = plt.plot(y_true,color='g', label='Valores Reais')
+#plt.xlim([0,85])
 #plt.legend(handles=[true_val,reg_val])
 #plt.show()
 
